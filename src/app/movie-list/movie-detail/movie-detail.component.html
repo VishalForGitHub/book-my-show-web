@@ -1,0 +1,32 @@
+<div class="movie-detail-container" *ngIf="movie">
+  <button class="back-btn" (click)="goBack()">Back</button>
+
+  <div class="movie-detail">
+    <div class="poster">
+      <img [src]="movie.poster" [alt]="movie.title" />
+    </div>
+    <div class="info">
+      <h1>{{ movie.title }}</h1>
+      <div class="interested">
+        👍 {{ movie.likes }} are interested
+        <button class="btn-outline">I'm interested</button>
+      </div>
+      <div class="tags">
+        <span class="tag">{{ movie.format }}</span>
+        <span class="tag">{{ movie.language }}</span>
+      </div>
+      <div class="meta">
+        {{ movie.duration }} • {{ movie.genre }} • {{ movie.certificate }}
+      </div>
+      <button class="book-btn" (click)="goToBooking(movie.id)">Book Tickets</button>
+    </div>
+  </div>
+
+  <div class="about">
+    <h2>About the movie</h2>
+    <p>{{ movie.about }}</p>
+  </div>
+</div>
+<ng-container>
+   <router-outlet></router-outlet>
+</ng-container>

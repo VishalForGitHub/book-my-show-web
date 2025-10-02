@@ -1,0 +1,55 @@
+<div class="container">
+    <nav class="navbar">
+        <div class="top-section">
+            <a href="#" class="logo">
+                <i class="fas fa-ticket-alt"></i>
+                <span>🎬BookMyShow</span>
+            </a>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search for Movies, Events, Plays, Sports and Activities">
+            </div>
+            
+            <div class="auth-buttons">
+                <button class="auth-btn signin-btn">Sign in</button>
+                <button class="auth-btn signup-btn">Sign up</button>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="active">Movies</li>
+            <li>Stream</li>
+            <li>Events</li>
+            <li>Plays</li>
+            <li>Sports</li>
+            <li>Activities</li>
+        </ul>
+        
+        <div class="promo-banner">
+            <h3>Your next credit card gets you 24 free* tickets!</h3>
+            <p>Exclusive offer for BookMyShow users</p>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-title">Recommended Movies</div>
+            <div class="promoted-tag">PROMOTED</div>
+            <!-- Content would go here -->
+        </div>
+    </nav>
+    
+    <app-home-movies-list></app-home-movies-list>
+
+    <div style="margin-top: 30px; text-align: center; color: #666;">
+        <!-- <p>Resize the browser window to see the responsive navbar in action!</p> -->
+        <p>2025 BookMyShow All Rights Reserved <p>
+    </div>
+</div>
+<ng-container>
+    <router-outlet></router-outlet>
+</ng-container>

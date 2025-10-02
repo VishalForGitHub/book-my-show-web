@@ -1,0 +1,353 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    padding-bottom: 20px;
+  }
+  
+  /* Header */
+  .header {
+    background: #ff3b6b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    font-size: 1em;
+  }
+  
+  /* Movie Info */
+  .movie-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    flex-wrap: wrap;
+  }
+  
+  .movie-poster {
+    width: 100px;
+    height: 150px;
+    background: #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #666;
+    flex-shrink: 0;
+  }
+  
+  .movie-details h2 {
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .movie-details p {
+    margin: 4px 0;
+    color: #555;
+  }
+  
+  /* Screen */
+  .screen-container {
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  .screen {
+    background: linear-gradient(90deg, #333, #666, #333);
+    color: white;
+    padding: 15px;
+    margin: 0 auto 30px;
+    width: 80%;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  
+  /* Seats */
+  .seats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .seat-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .row-label {
+    width: 30px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .seat {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px 8px 4px 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .seat.available {
+    background: #28a745;
+    color: white;
+  }
+  
+  .seat.available:hover {
+    background: #218838;
+    transform: scale(1.1);
+  }
+  
+  .seat.selected {
+    background: #007bff;
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  .seat.occupied {
+    background: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .seat.vip {
+    background: #ffc107;
+    color: #333;
+  }
+  
+  .seat.vip.selected {
+    background: #fd7e14;
+    color: white;
+  }
+  
+  .gap {
+    width: 40px;
+  }
+  
+  /* Legend */
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+  
+  /* Booking Summary */
+  .booking-summary {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+  }
+  
+  .selected-seats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+    min-height: 40px;
+  }
+  
+  .seat-tag {
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  
+  .price-summary {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+  }
+  
+  .total {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ff3b6b;
+  }
+  
+  .book-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .book-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+  }
+  
+  .book-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* space between arrow and text */
+    margin: 5px 0 1rem 1rem;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    background: #FF5555;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .back-btn:hover {
+    background: #e04c4c; /* slightly darker red on hover */
+    transform: translateY(-2px);
+  }
+  
+  .back-btn:active {
+    background: #c94444; /* deeper red when pressed */
+    transform: translateY(0);
+  }
+  
+  .poster img {
+    width: 250px;
+    border-radius: 10px;
+  }
+  /* Responsive Media Queries */
+  
+  /* Tablets */
+  @media (max-width: 1024px) {
+    .screen {
+      width: 90%;
+    }
+    .movie-info {
+      gap: 15px;
+    }
+    .seat {
+      width: 32px;
+      height: 32px;
+      font-size: 11px;
+    }
+  }
+  
+  /* Small tablets / large phones */
+  @media (max-width: 768px) {
+    .seat {
+      width: 30px;
+      height: 30px;
+      font-size: 10px;
+    }
+    
+    .gap {
+      width: 20px;
+    }
+    
+    .header h1 {
+      font-size: 2em;
+    }
+  
+    .movie-info {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .screen {
+      width: 95%;
+    }
+  }
+  
+  /* Mobile phones */
+  @media (max-width: 500px) {
+    .legend {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .book-btn {
+      font-size: 1em;
+      padding: 12px;
+    }
+  
+    .seat {
+      width: 28px;
+      height: 28px;
+      font-size: 9px;
+    }
+  }
+  
+  /* Very small phones */
+  @media (max-width: 400px) {
+    .seat {
+      width: 24px;
+      height: 24px;
+      font-size: 8px;
+    }
+  
+    .row-label {
+      width: 25px;
+      font-size: 12px;
+    }
+  }
+  

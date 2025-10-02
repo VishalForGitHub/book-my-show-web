@@ -1,0 +1,91 @@
+<button class="back-btn" (click)="goBack()">Back</button>
+<div class="container">
+    <div class="header">
+      <h1>🎬 BookMyShow</h1>
+      <p>Book your perfect movie experience</p>
+    </div>
+  
+    <div class="movie-info">
+      <div class="poster"><img [src]="movie.poster" [alt]="movie.title"></div>
+      <div class="movie-details">
+        <h2>{{movie.title}}</h2>
+        <p>⚡ {{movie.type}} ⏰ {{movie.duration}}</p>
+        <p>📍 Cineplex Downtown | 🕒 Today, 7:00 PM</p>
+      </div>
+    </div>
+  
+    <div class="screen-container">
+      <div class="screen">SCREEN THIS WAY</div>
+  
+      <div class="seats-container">
+        <div class="seat-row" *ngFor="let row of seatConfig.rows">
+          <div class="row-label">{{ row }}</div>
+  
+          <ng-container *ngFor="let seat of [].constructor(seatConfig.seatsPerRow); let i = index">
+            <!-- gap after specific seat -->
+            <div class="gap" *ngIf="i === seatConfig.gapAfter"></div>
+  
+            <div
+              class="seat"
+              [class.occupied]="isOccupied(row + (i + 1))"
+              [class.vip]="isVIP(row)"
+              [class.selected]="isSelected(row + (i + 1))"
+              [class.available]="!isOccupied(row + (i + 1)) && !isSelected(row + (i + 1))"
+              (click)="toggleSeat(row + (i + 1), row)"
+            >
+              {{ i + 1 }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+  
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-color" style="background: #28a745;"></div>
+          <span>Available</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #007bff;"></div>
+          <span>Selected</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #6c757d;"></div>
+          <span>Occupied</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #ffc107;"></div>
+          <span>VIP</span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="booking-summary">
+      <h3>Booking Summary</h3>
+  
+      <div class="selected-seats">
+        <div class="seat-tag" *ngFor="let seat of selectedSeats">{{ seat }}</div>
+      </div>
+  
+      <div class="price-summary">
+        <span>Regular Seats ({{ regularSeatsCount }}x ₹{{ seatConfig.prices.regular }}):</span>
+        <span>₹{{ regularTotal }}</span>
+      </div>
+      <div class="price-summary">
+        <span>VIP Seats ({{ vipSeatsCount }}x ₹{{ seatConfig.prices.vip }}):</span>
+        <span>₹{{ vipTotal }}</span>
+      </div>
+      <div class="price-summary total">
+        <span>Total Amount:</span>
+        <span>₹{{ totalAmount }}</span>
+      </div>
+  
+      <button
+        class="book-btn"
+        [disabled]="selectedSeats.length === 0"
+        (click)="bookSeats()"
+      >
+        {{ selectedSeats.length > 0 ? 'Book ' + selectedSeats.length + ' Seat(s) - ₹' + totalAmount : 'Book Now' }}
+      </button>
+    </div>
+  </div>
+  

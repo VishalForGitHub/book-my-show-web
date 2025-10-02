@@ -1,0 +1,150 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e61e4d; /* BookMyShow Pink */
+    margin-bottom: 20px;
+  }
+  
+  .movies-carousel {
+    position: relative;
+  }
+  
+  .movies-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 10px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  .movies-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 1.2rem;
+    color: #e61e4d;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .nav-btn:hover {
+    background: #e61e4d;
+    color: white;
+  }
+  .nav-btn.prev {
+    left: -20px;
+  }
+  .nav-btn.next {
+    right: -20px;
+  }
+  
+  .movie-card {
+    min-width: 220px;
+    max-width: 220px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  .movie-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .movie-poster {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+  }
+  .movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .movie-rating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e61e4d;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+  }
+  
+  .movie-info {
+    padding: 12px;
+  }
+  .movie-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 5px 0;
+    color: #2c3e50;
+  }
+  .movie-genre {
+    font-size: 0.9rem;
+    color: #777;
+  }
+  .movie-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  .likes span {
+    color: #27ae60;
+    font-weight: 600;
+  }
+  .votes span {
+    color: #e74c3c;
+    font-weight: 600;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .watch-btn {
+    background: #e61e4d;
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .watch-btn:hover {
+    background: #c2185b;
+  }
+  .action-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #888;
+  }
+  .action-btn:hover {
+    color: #e61e4d;
+  }
+  

@@ -1,0 +1,102 @@
+.movie-detail-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .movie-detail {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .poster img {
+    width: 250px;
+    border-radius: 10px;
+  }
+  
+  .info {
+    flex: 1;
+  }
+  
+  .interested {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .btn-outline {
+    border: 1px solid #333;
+    background: transparent;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .tags {
+    margin: 10px 0;
+  }
+  
+  .tag {
+    display: inline-block;
+    background: #eee;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+  }
+  
+  .meta {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .book-btn {
+    background: #f55;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .about {
+    margin-top: 30px;
+  }
+  
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* space between arrow and text */
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    background: #FF5555;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .back-btn:hover {
+    background: #e04c4c; /* slightly darker red on hover */
+    transform: translateY(-2px);
+  }
+  
+  .back-btn:active {
+    background: #c94444; /* deeper red when pressed */
+    transform: translateY(0);
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .movie-detail {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  
