@@ -5,22 +5,40 @@
                 <i class="fas fa-ticket-alt"></i>
                 <span>🎬BookMyShow</span>
             </a>
-            
+
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" placeholder="Search for Movies, Events, Plays, Sports and Activities">
             </div>
-            
-            <div class="auth-buttons">
+
+            <!-- Before login -->
+            <div class="auth-buttons" id="authSection" *ngIf="!isLoggedIn">
                 <button class="auth-btn signin-btn" (click)="openLogInPopup()">Sign in</button>
-                <button class="auth-btn signup-btn" (click)="openSignUpPopup()">Sign up</button>
+                <!-- <button class="auth-btn signup-btn" (click)="openSignUpPopup()">Sign up</button> -->
             </div>
-            
+
+            <!-- After login (hidden by default, shown dynamically after authentication) -->
+            <div class="user-profile" *ngIf="isLoggedIn">
+                <div class="profile-icon" (click)="toggleDropdown($event)">
+                    <img src="https://i.pravatar.cc/40" alt="User Profile">
+                </div>
+
+                <div class="profile-dropdown" [class.active]="isDropdownOpen">
+                    <ul>
+                        <li><i class="fas fa-user"></i> My Profile</li>
+                        <li><i class="fas fa-ticket-alt"></i> My Bookings</li>
+                        <li><i class="fas fa-cog"></i> Settings</li>
+                        <li (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</li>
+                    </ul>
+                </div>
+            </div>
+
+
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        
+
         <ul class="nav-menu">
             <li class="active">Movies</li>
             <li>Stream</li>
@@ -29,27 +47,28 @@
             <li>Sports</li>
             <li>Activities</li>
         </ul>
-        
+
         <div class="promo-banner">
             <h3>Your next credit card gets you 24 free* tickets!</h3>
             <p>Exclusive offer for BookMyShow users</p>
             <button class="apply-btn">Apply Now</button>
         </div>
-        
+
         <div class="content-section">
             <div class="section-title">Recommended Movies</div>
             <div class="promoted-tag">PROMOTED</div>
             <!-- Content would go here -->
         </div>
     </nav>
-    
+
     <app-home-movies-list></app-home-movies-list>
 
     <div style="margin-top: 30px; text-align: center; color: #666;">
-        <!-- <p>Resize the browser window to see the responsive navbar in action!</p> -->
-        <p>2025 BookMyShow All Rights Reserved <p>
+        <p>2025 BookMyShow All Rights Reserved
+        <p>
     </div>
 </div>
+
 <ng-container>
     <router-outlet></router-outlet>
 </ng-container>
