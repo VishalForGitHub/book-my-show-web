@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../service/auth-service/auth.service';
+import { SignupComponent } from '../signup/signup.component';
 @Component({
   selector: 'app-login',
   imports: [CommonModule, ReactiveFormsModule],
@@ -16,8 +17,9 @@ export class LoginComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<LoginComponent>,
     private fb: FormBuilder,
-    private authService:AuthService
-  ) {}
+    private authService: AuthService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -30,17 +32,23 @@ export class LoginComponent implements OnInit {
     // console.log('Form Value:', this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe(
       {
-        next:(res)=>{
+        next: (res) => {
           console.log(res);
-          localStorage.setItem('email',res.email);
-           alert(res.message);
-           this.dialogRef.close(res.status);
+          localStorage.setItem('email', res.email);
+          alert(res.message);
+          this.dialogRef.close(res.status);
         },
-        error:(err)=>{
-           alert(err.message);
+        error: (err) => {
+          alert(err.message);
         }
       }
     )
+  }
+
+  openSignUpPopup() {
+    this.dialog.open(SignupComponent, {
+    });
+    this.close();
   }
 
   close(): void {

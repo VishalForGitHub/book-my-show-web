@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { HomeMoviesListComponent } from '../../../movie-list/home-movies-list/home-movies-list.component';
 import { RouterOutlet } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,11 +11,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent{
   constructor(private dialog: MatDialog) { }
+  // ngOnInit(): void {
+  //   this.isLoggedIn = false; // change to false initially if needed
+  // }
   visible = true
+  isLoggedIn:boolean=true;
   isDropdownOpen = false;
-  isLoggedIn = false; // change to false initially if needed
   openLogInPopup() {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '400px'
@@ -53,6 +56,7 @@ export class NavbarComponent {
 
   logout() {
     // Your logout logic here
+    console.log("logged out");
     this.isLoggedIn = false;
     this.isDropdownOpen = false;
   }

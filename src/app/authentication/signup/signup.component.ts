@@ -2,22 +2,26 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../service/auth-service/auth.service';
 @Component({
   selector: 'app-signup',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
 export class SignupComponent implements OnInit {
-  @Input() isOpen = false;
-  @Output() closed = new EventEmitter<void>();
-  @Output() submitted = new EventEmitter<any>();
+  // @Input() isOpen = false;
+  // @Output() closed = new EventEmitter<void>();
+  // @Output() submitted = new EventEmitter<any>();
   visible = true;
 
   signupForm!: FormGroup;
-  constructor(private fb: FormBuilder,
-    public dialogRef: MatDialogRef<SignupComponent>
-  ) { 
+  constructor(
+    private fb: FormBuilder,
+    public dialogRef: MatDialogRef<SignupComponent>,
+    public authService:AuthService
+  ) {
   }
 
   ngOnInit(): void {
@@ -25,48 +29,61 @@ export class SignupComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      remember: [false]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  control(name: string) {
-    return this.signupForm.get(name)!;
+
+  onSignup(): void {
+     this.authService.signup(this.signupForm.value).subscribe(
+        {
+            next:(res)=>{
+                console.log(res);
+            },
+            error:(err)=>{
+                
+            },
+        }
+     );
   }
 
-  onOverlayClick(e: MouseEvent) {
-    // Close when clicking outside modal box
-    this.close();
-  }
-
-  // close() {
-  //   this.isOpen = false;
-  //   this.closed.emit();
+  // control(name: string) {
+  //   return this.signupForm.get(name)!;
   // }
 
-  onSubmit() {
-    if (this.signupForm.invalid) {
-      this.signupForm.markAllAsTouched();
-      return;
-    }
+  // onOverlayClick(e: MouseEvent) {
+  //   // Close when clicking outside modal box
+  //   this.close();
+  // }
 
-    const value = this.signupForm.value;
-    // emit the form value so parent can handle signup (e.g. call API)
-    this.submitted.emit(value);
-    // optionally close the modal
-    this.close();
-  }
+  // // close() {
+  // //   this.isOpen = false;
+  // //   this.closed.emit();
+  // // }
 
-  social(provider: string) {
-    console.log('social login:', provider);
-    // stub: wire up real social login here
-  }
+  // onSubmit() {
+  //   if (this.signupForm.invalid) {
+  //     this.signupForm.markAllAsTouched();
+  //     return;
+  //   }
 
-  openLogin() {
-    // stub: if you have a login modal flow, trigger it here
-    console.log('open login flow');
-  }
-  // visible = true;
+  //   const value = this.signupForm.value;
+  //   // emit the form value so parent can handle signup (e.g. call API)
+  //   this.submitted.emit(value);
+  //   // optionally close the modal
+  //   this.close();
+  // }
+
+  // social(provider: string) {
+  //   console.log('social login:', provider);
+  //   // stub: wire up real social login here
+  // }
+
+  // openLogin() {
+  //   // stub: if you have a login modal flow, trigger it here
+  //   console.log('open login flow');
+  // }
+  // // visible = true;
 
   close() {
     this.dialogRef.close();
